@@ -7,12 +7,10 @@
 -->
 
 
-<!--
-### Demo:
-![](https://media.giphy.com/media/enrJYf7QuIJSde1OEN/giphy.gif)
--->
 
-## Demo: [Video](/demo.mp4)
+### Demo:
+![](/demo.gif)
+
 
 
 ## UpiPayment Library for Android (AndroidX)
