@@ -1,0 +1,16 @@
+
+<resources>
+
+    <!-- set the rounded drawable as background to your bottom sheet -->
+    <style name="background.style.Dialog.BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/wangsun_upi_payment_dr_bottom_sheet_white</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <style name="wangsun.style.Dialog.BottomSheet" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/background.style.Dialog.BottomSheet</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+</resources>

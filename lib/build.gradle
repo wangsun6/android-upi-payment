@@ -1,0 +1,94 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+    }
+}
+
+
+ext {
+    bintrayRepo = 'android-upi-payment'
+    bintrayName = 'com.wangsun.upi.payment'
+
+    publishedGroupId = 'com.wangsun.upi.payment'
+    libraryName = 'Android Upi PaymentDetail'
+    artifact = 'upi-payment'
+
+    libraryDescription = 'Android Library for integrating upi payment'
+
+    siteUrl = 'https://github.com/wangsun6/android-upi-payment'
+    gitUrl = 'https://github.com/wangsun6/android-upi-payment.git'
+
+    libraryVersionCode = 1
+    libraryVersion = '0.0.1'
+
+    developerId = 'wangsun6'
+    developerName = 'Wangsun Hakhun'
+    developerEmail = 'wangsunhakhun@gmail.com'
+
+    licenseName = 'MIT License'
+    licenseUrl = 'https://github.com/wangsun6/android-upi-payment/blob/master/LICENSE'
+    allLicenses = ["MIT"]
+}
+
+android {
+    compileSdkVersion 29
+
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode libraryVersionCode
+        versionName libraryVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+
+    implementation 'com.google.android.material:material:1.1.0-alpha10'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    //Anko
+    implementation "org.jetbrains.anko:anko:0.10.8"
+
+    //image
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/id_pay_using_upi_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pay Using UPI App"
+        android:layout_gravity="center"
+        android:padding="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+
+</FrameLayout>

@@ -1,0 +1,171 @@
+# Upi Payment
+
+
+![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
+<!--
+[ ![Download](https://api.bintray.com/packages/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/images/download.svg?version=latest) ](https://bintray.com/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/1.0.1/link)
+-->
+
+
+<!--
+### Demo:
+![](https://media.giphy.com/media/enrJYf7QuIJSde1OEN/giphy.gif)
+-->
+
+## Demo: [Video](/demo.mp4)
+
+
+## UpiPayment Library for Android (AndroidX)
+
+A UpiPayment library for integrating upi payments using existing upi supported apps like googple pay, bhim etc.
+
+
+## Setup
+Step 1: Add the dependency
+
+```gradle
+dependencies {
+    ...
+    /*Upi Payment */
+    implementation 'com.wangsun.upi.payment:upi-payment:0.0.1'
+}
+```
+
+## Usage
+Step 1: Declare and Initialize UpiPayment.
+
+#### Java
+```java
+
+// note: always create new instance of PaymentDetail for every new payment/order
+var payment = PaymentDetail(
+    "wangsunhakhun@oksbi",  //vpa/upi = your vpa/upi
+    "Wangsun Hakhun",       //name = your name
+    "",                     //payeeMerchantCode = only if you have merchantCode else pass empty string
+    "",                     //txnRefId =  if you pass empty string we will generate txnRefId for you
+    "description",          //description =
+    "2.00")                 //amount = format of amount should be in decimal format x.x (eg 530.00)
+
+// note: always create new instance of UpiPayment for every new payment/order
+new UpiPayment(this)
+        .setPaymentDetail(payment)
+        .setUpiApps(UpiPayment.getUPI_APPS())
+        .setCallBackListener(new UpiPayment.OnUpiPaymentListener() {
+            @Override
+            public void onSubmitted(@NotNull TransactionDetails data) {
+                //transaction pending: use data to get TransactionDetails
+            }
+
+            @Override
+            public void onError(@NotNull String message) {
+                //user backpress or transaction failed
+            }
+
+            @Override
+            public void onSuccess(@NotNull TransactionDetails data) {
+                //transaction success: use data to get TransactionDetails
+            }
+        }).pay();
+```
+
+#### Kotlin
+```kotlin
+
+// note: always create new instance of PaymentDetail for every new payment/order
+var payment = PaymentDetail(
+    vpa="wangsunhakhun@oksbi",
+    name = "Wangsun Hakhun",
+    payeeMerchantCode = "",       // only if you have merchantCode else pass empty string
+    txnRefId = "",                // if you pass empty string we will generate txnRefId for you
+    description = "description",
+    amount = "2.00")              // format of amount should be in decimal format x.x (eg 530.00)
+
+// note: always create new instance of UpiPayment for every new payment/order
+UpiPayment(this)
+    .setPaymentDetail(payment)
+    .setUpiApps(UpiPayment.UPI_APPS)
+    .setCallBackListener(object : UpiPayment.OnUpiPaymentListener{
+        override fun onSubmitted(data: TransactionDetails) {
+            //transaction pending: use data to get TransactionDetails
+        }
+        override fun onSuccess(data: TransactionDetails) {
+            //transaction success: use data to get TransactionDetails
+        }
+        override fun onError(message: String) {
+            //user backpress or transaction failed
+        }
+    }).pay()
+```
+
+## Explanation:
+
+#### 1. setPaymentDetail():
+Set all payment details like vpa/upi, amount, name etc.
+Note: always create new instance of PaymentDetail for every new payment/order.
+
+#### 2. setUpiApps():
+Set selected upiApps.
+
+### Java
+eg.
+```java
+//adding others upi apps to our default selected apps
+//todo: check names of all apps first
+//todo: name should be in lowercase
+ArrayList<String> appList = UpiPayment.getUPI_APPS();
+appList.add("new app name1");
+appList.add("new app name2");
+
+//adding new set of apps
+ArrayList<String> newList = new ArrayList<String>();
+newList.add("paytm")
+newList.add("google pay")
+newList.add("bhim")
+
+//and pass this to: setUpiApps(newList): or setUpiApps(appList):
+
+```
+
+### Kotlin
+eg.
+```kotlin
+
+//adding others upi apps to our default selected apps.
+val appList = UpiPayment.UPI_APPS
+appList.add("add new app name")
+
+
+//adding new set of apps.
+val newList = ArrayList<String>()
+newList.add("paytm")
+newList.add("google pay")
+newList.add("bhim")
+
+
+//and pass this to: setUpiApps(newList): or setUpiApps(appList):
+```
+
+#### 3. setCallBackListener():
+this will listen to the result of payment transaction(Only one callback will trigger for a single transaction).
+1. **.onSuccess()**: trigger whenever transaction is successfully completed
+2. **.onSubmitted()**: trigger whenever transaction is pending
+3. **.onError()**: trigger whenever transaction is failed/user backpress/or other error
+
+---
+
+
+### Quick Links
+
+*  [ChangeLog](/CHANGELOG.md)
+
+---
+
+### To pick media files(audio,image,video) you can use [Turtlebody Media Picker](https://github.com/Turtlebody/android-media-picker) library.
+
+
+### To pick doc files(txt,doc,docx,pdf etc) you can use [Turtlebody Doc Picker](https://github.com/Turtlebody/android-doc-picker) library.
+
+
+
+
+
