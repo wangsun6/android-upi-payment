@@ -19,7 +19,7 @@ import java.util.*
 /**
  * Created by WANGSUN on 26-Sep-19.
  */
-class UpiPayment(activity: FragmentActivity) {
+class UpiPayment(activity: FragmentActivity){
     private var mPaymentDetail: PaymentDetail? = null
     private var mActivity: WeakReference<FragmentActivity> = WeakReference(activity)
     private var mUpiApps: ArrayList<String> = arrayListOf()

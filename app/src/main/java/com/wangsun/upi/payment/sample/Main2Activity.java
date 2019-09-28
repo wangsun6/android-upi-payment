@@ -12,7 +12,7 @@ import com.wangsun.upi.payment.model.TransactionDetails;
 
 import org.jetbrains.annotations.NotNull;
 
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

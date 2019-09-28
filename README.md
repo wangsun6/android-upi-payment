@@ -149,6 +149,31 @@ this will listen to the result of payment transaction(Only one callback will tri
 2. **.onSubmitted()**: trigger whenever transaction is pending
 3. **.onError()**: trigger whenever transaction is failed/user backpress/or other error
 
+If you want to implement callBackListener() globally follow below code:
+
+### Java
+```java
+public class YourActivity extends AppCompatActivity implements UpiPayment.OnUpiPaymentListener {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    //override below functions
+    @Override
+    public void onSuccess(@NotNull TransactionDetails data) {}
+
+    @Override
+    public void onSubmitted(@NotNull TransactionDetails data) {}
+
+    @Override
+    public void onError(@NotNull String message) {}
+}
+
+```
+
 ---
 
 
