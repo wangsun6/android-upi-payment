@@ -76,7 +76,7 @@ var payment = PaymentDetail(
     payeeMerchantCode = "",       // only if you have merchantCode else pass empty string
     txnRefId = "",                // if you pass empty string we will generate txnRefId for you
     description = "description",
-    amount = "2.00")              // format of amount should be in decimal format x.x (eg 530.00)
+    amount = "2.00")              // format of amount should be in decimal format x.x (eg 530.00), max. 2 decimal places
 
 // note: always create new instance of UpiPayment for every new payment/order
 UpiPayment(this)
@@ -149,9 +149,10 @@ this will listen to the result of payment transaction(Only one callback will tri
 2. **.onSubmitted()**: trigger whenever transaction is pending
 3. **.onError()**: trigger whenever transaction is failed/user backpress/or other error
 
-If you want to implement callBackListener() globally follow below code:
+If you want to implement callBackListener() globally then implements UpiPayment.OnUpiPaymentListener.
 
 ### Java
+eg.
 ```java
 public class YourActivity extends AppCompatActivity implements UpiPayment.OnUpiPaymentListener {
 
