@@ -1,6 +1,7 @@
 package com.wangsun.upi.payment
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.ResolveInfo
 import android.net.Uri
@@ -36,6 +37,40 @@ class UpiPayment(activity: FragmentActivity){
          */
         @JvmStatic
         val UPI_APPS: ArrayList<String> = arrayListOf("google pay","phonepe","paytm","bhim","mobikwik")
+
+        /**
+         * if developer want to check existing upi apps
+         * to control visibility of "Pay using Upi App" button.
+         *
+         * eg. if developer want to show "Pay using Upi App" button only if upi app present
+         */
+        @JvmStatic
+        fun getExistingUpiApps(context: Context): ArrayList<String>{
+
+            // Set Parameters for UPI
+            val payUri = Uri.Builder()
+
+            payUri.scheme("upi").authority("pay")
+            payUri.appendQueryParameter("pa", "")
+            payUri.appendQueryParameter("pn", "")
+            payUri.appendQueryParameter("tid", "")
+            payUri.appendQueryParameter("mc", "")
+            payUri.appendQueryParameter("tr", "")
+            payUri.appendQueryParameter("tn", "")
+            payUri.appendQueryParameter("am", "")
+            payUri.appendQueryParameter("cu", "")
+
+            val paymentIntent = Intent(Intent.ACTION_VIEW)
+            paymentIntent.data = payUri.build()
+
+            val appNames = arrayListOf<String>()
+
+            val appList = context.packageManager.queryIntentActivities(paymentIntent, 0)
+            for (i in appList){
+                appNames.add(i.loadLabel(context.packageManager).toString().toLowerCase())
+            }
+            return appNames
+        }
     }
 
 
@@ -81,6 +116,7 @@ class UpiPayment(activity: FragmentActivity){
         else
             Toast.makeText(mActivity.get(),"set callback listener first.",Toast.LENGTH_SHORT).show()
     }
+
 
     /**
      * start fragment

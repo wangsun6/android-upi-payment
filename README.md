@@ -2,9 +2,7 @@
 
 
 ![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
-<!--
-[ ![Download](https://api.bintray.com/packages/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/images/download.svg?version=latest) ](https://bintray.com/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/1.0.1/link)
--->
+[ ![Download](https://api.bintray.com/packages/wangsun6/android-upi-payment/com.wangsun.upi.payment/images/download.svg?version=latest) ](https://bintray.com/wangsun6/android-upi-payment/com.wangsun.upi.payment/latest/link)
 
 
 
@@ -25,7 +23,7 @@ Step 1: Add the dependency
 dependencies {
     ...
     /*Upi Payment */
-    implementation 'com.wangsun.upi.payment:upi-payment:0.0.1'
+    implementation 'com.wangsun.upi.payment:upi-payment:0.0.2'
 }
 ```
 
@@ -124,25 +122,6 @@ newList.add("bhim")
 
 ```
 
-### Kotlin
-eg.
-```kotlin
-
-//adding others upi apps to our default selected apps.
-val appList = UpiPayment.UPI_APPS
-appList.add("add new app name")
-
-
-//adding new set of apps.
-val newList = ArrayList<String>()
-newList.add("paytm")
-newList.add("google pay")
-newList.add("bhim")
-
-
-//and pass this to: setUpiApps(newList): or setUpiApps(appList):
-```
-
 #### 3. setCallBackListener():
 this will listen to the result of payment transaction(Only one callback will trigger for a single transaction).
 1. **.onSuccess()**: trigger whenever transaction is successfully completed
@@ -172,6 +151,18 @@ public class YourActivity extends AppCompatActivity implements UpiPayment.OnUpiP
     @Override
     public void onError(@NotNull String message) {}
 }
+
+```
+---
+### Extra function-> existingUpiApps(paymentDetail):
+If developer wants to check existing upi apps.
+Developer can hide(visibility) "Pay using Upi App" button  if there is not upi app present.
+
+### Java
+eg.
+```java
+
+ArrayList<String> existingUpiAppNames = UpiPayment.getExistingUpiApps(context);
 
 ```
 

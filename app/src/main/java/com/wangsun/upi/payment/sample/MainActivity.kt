@@ -49,5 +49,9 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
                     Toast.makeText(this@MainActivity,"transaction failed: $message",Toast.LENGTH_LONG).show()
                 }
             }).pay()
+
+
+        val existingApps = UpiPayment.getExistingUpiApps(this)
+        info { "existing app: $existingApps" }
     }
 }

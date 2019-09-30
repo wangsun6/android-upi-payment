@@ -29,8 +29,8 @@ ext {
     siteUrl = 'https://github.com/wangsun6/android-upi-payment'
     gitUrl = 'https://github.com/wangsun6/android-upi-payment.git'
 
-    libraryVersionCode = 1
-    libraryVersion = '0.0.1'
+    libraryVersionCode = 2
+    libraryVersion = '0.0.2'
 
     developerId = 'wangsun6'
     developerName = 'Wangsun Hakhun'

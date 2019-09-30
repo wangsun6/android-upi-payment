@@ -12,6 +12,8 @@ import com.wangsun.upi.payment.model.TransactionDetails;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
 public class Main2Activity extends AppCompatActivity{
 
     @Override
@@ -30,6 +32,9 @@ public class Main2Activity extends AppCompatActivity{
 
 
     private void startUpiPayment() {
+
+        ArrayList<String> existingApps = UpiPayment.getExistingUpiApps(this);
+
         PaymentDetail payment = new PaymentDetail("wangsunhakhun@oksbi","Wangsun Hakhun",
                 "","", "description","2.00");
 
