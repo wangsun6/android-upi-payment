@@ -154,9 +154,9 @@ public class YourActivity extends AppCompatActivity implements UpiPayment.OnUpiP
 
 ```
 ---
-### Extra function-> existingUpiApps(paymentDetail):
+### Extra function-> getExistingUpiApps():
 If developer wants to check existing upi apps.
-Developer can hide(visibility) "Pay using Upi App" button  if there is not upi app present.
+Developer can hide(visibility) "Pay using Upi App" button  if there is no upi app present.
 
 ### Java
 eg.
