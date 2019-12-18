@@ -9,5 +9,5 @@ data class TransactionDetails(val transactionId: String?,
                               val approvalRefNo: String?,
                               val status: String?,
                               val transactionRefId: String?){
-    var appUsed: String=""
+    var appName: String=""
 }

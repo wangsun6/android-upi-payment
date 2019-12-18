@@ -31,7 +31,6 @@ class UpiPayment(activity: FragmentActivity){
     companion object{
         const val UPI_PAYMENT_REQUEST_CODE = 201
         const val ARG_UPI_APPS_LIST = "upi.apps.list"
-
         /**
          * default selected upi apps
          */
@@ -193,6 +192,8 @@ class UpiPayment(activity: FragmentActivity){
      ************************/
     class UpiPaymentFragment : Fragment(), AnkoLogger {
 
+        var selectedApp: String = ""
+
         override fun onActivityCreated(savedInstanceState: Bundle?) {
             super.onActivityCreated(savedInstanceState)
 
@@ -241,6 +242,7 @@ class UpiPayment(activity: FragmentActivity){
                 override fun onUpiAppClosed() { mListener?.onError() }
 
                 override fun onUpiAppSelected(data: ResolveInfo) {
+                    selectedApp = data.loadLabel(context!!.packageManager).toString().toLowerCase()
                     val paymentIntent = Intent(Intent.ACTION_VIEW)
                     paymentIntent.data = uri
                     paymentIntent.setPackage(data.activityInfo.packageName)
@@ -265,9 +267,11 @@ class UpiPayment(activity: FragmentActivity){
                             val transactionDetails = getTransactionDetails(response)
                             info { "onActivityResult-> transactionDetails: $transactionDetails" }
                             if(transactionDetails.status!=null){
+                                transactionDetails.appName = selectedApp
+
                                 when(transactionDetails.status.toLowerCase()) {
                                     "success" -> mListener?.onSuccess(transactionDetails)
-                                    "onSubmitted" -> mListener?.onSubmitted(transactionDetails)
+                                    "submitted" -> mListener?.onSubmitted(transactionDetails)
                                     else -> mListener?.onError("Payment failed.")
                                 }
                             }

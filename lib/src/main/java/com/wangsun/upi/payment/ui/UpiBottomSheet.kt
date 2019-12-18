@@ -57,7 +57,7 @@ class UpiBottomSheet : BottomSheetDialogFragment(),AnkoLogger {
             this.dismiss()
         }
 
-        dialog.setOnShowListener { dialog ->
+        dialog?.setOnShowListener { dialog ->
             val d = dialog as BottomSheetDialog
             val bottomSheet = d.findViewById<View>(R.id.design_bottom_sheet) as FrameLayout
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)

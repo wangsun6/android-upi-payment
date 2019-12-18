@@ -29,8 +29,8 @@ ext {
     siteUrl = 'https://github.com/wangsun6/android-upi-payment'
     gitUrl = 'https://github.com/wangsun6/android-upi-payment.git'
 
-    libraryVersionCode = 2
-    libraryVersion = '0.0.2'
+    libraryVersionCode = 4
+    libraryVersion = '0.0.4'
 
     developerId = 'wangsun6'
     developerName = 'Wangsun Hakhun'
@@ -70,19 +70,18 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.1.0'
 
-    implementation 'com.google.android.material:material:1.1.0-alpha10'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
-    //Anko
+    /*Anko*/
     implementation "org.jetbrains.anko:anko:0.10.8"
 
-    //image
+    /*Image*/
     implementation 'com.github.bumptech.glide:glide:4.9.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }
 
 

@@ -23,7 +23,7 @@ Step 1: Add the dependency
 dependencies {
     ...
     /*Upi Payment */
-    implementation 'com.wangsun.upi.payment:upi-payment:0.0.2'
+    implementation 'com.wangsun.upi.payment:upi-payment:{latestVersion}'
 }
 ```
 
